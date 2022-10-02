@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Navigation from './Component/Navigation';
+import MovieListe from './Component/MovieListe';
+import {moviesData} from './Data';
+import AddMovie from './Component/AddMovie'
+
+
 
 function App() {
+const [movies , setMovies] = useState (moviesData)
+const [name,setName] = useState ("")
+const [value, setValue] =useState(0)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <Navigation setName={setName}  value={value} setValue={setValue}/>
+    <MovieListe movies={movies} name ={name} value={value}/>
+    <AddMovie setMovies={setMovies} movies={movies}/>
+    
+    
+    
+      
     </div>
   );
 }
